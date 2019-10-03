@@ -337,8 +337,9 @@ def get_accuracy(preds, y):
     """"return accuracy per batch , i.e."""
     result = []
     for i in preds:
-        i = i.cpu().detach().numpy()
-        result.append(int(np.argmax(i)))
+#         i = i.cpu().detach().numpy()
+#         result.append(int(np.argmax(i)))   ###torch有自己的argmax函数
+            result.append(int(torch.argmax(i)))
     sum = 0
     for i in range(len(y)):
         if result[i] == y[i]:
